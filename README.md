@@ -1,3 +1,3 @@
 # geotekppu
-[![Coverage](https://github.com/febrifahmi/geotekppu/actions/workflows/coverage.yml/coverage.svg)](https://github.com/febrifahmi/geotekppu/actions/workflows/coverage.yml)
+[![Coverage](https://github.com/febrifahmi/runner/work/geotekppu/geotekppu/coverage.svg)]
 A python module for geotechnic analysis
