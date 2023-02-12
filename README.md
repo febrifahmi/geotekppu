@@ -1,3 +1,3 @@
 # geotekppu
-[![Coverage](https://github.com/febrifahmi/runner/work/geotekppu/geotekppu/coverage.svg)]
+![Coverage](coverage.svg "Test Coverage")
 A python module for geotechnic analysis
