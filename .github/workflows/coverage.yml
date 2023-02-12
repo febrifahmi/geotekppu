@@ -5,5 +5,7 @@ jobs:
   Create-Test-Coverage-Badge:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
       - name: coverage.py badge
         uses: tj-actions/coverage-badge-py@v1.8
