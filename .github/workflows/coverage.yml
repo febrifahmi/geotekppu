@@ -1,0 +1,9 @@
+name: Create Test Coverage Badge
+run-name: ${{ github.actor }} is creating test coverage badge 🚀
+on: [push]
+jobs:
+  Create-Test-Coverage-Badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: coverage.py badge
+        uses: tj-actions/coverage-badge-py@v1.8
