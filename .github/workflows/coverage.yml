@@ -2,7 +2,7 @@ name: Create Test Coverage Badge
 run-name: ${{ github.actor }} is creating test coverage badge 🚀
 on: [push]
 jobs:
-  Create-Test-Coverage-Badge:
+  Coverage:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
