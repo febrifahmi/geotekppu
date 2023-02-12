@@ -15,7 +15,7 @@ def r1(idx, value):
     Parameters:
     -----------
 
-    idx : selected index
+    idx : selected index either 'pls' for point-loads strength or 'ucs' for uniaxial compressive strength
     value : strength of intact rock material (in MPa)
 
     Return:
@@ -35,7 +35,7 @@ def r1(idx, value):
         elif 2 > value and value > 1:
             val_r1 = 4
         else:
-            print("For value lower than 1 MPa, please proceed with Uniaxial Compressive Strength Test") 
+            val_r1 = "For value lower than 1 MPa, please proceed with Uniaxial Compressive Strength Test" 
     elif idx == "ucs":
         if value > 250:
             val_r1 = 15
