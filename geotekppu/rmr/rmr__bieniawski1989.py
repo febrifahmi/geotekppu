@@ -83,6 +83,99 @@ def r2(drillcoreRQD):
     return val_r2
 
 
+def r3(spacing):
+    """
+    Space of discontinuity rating.
+
+    Parameters:
+    -----------
+
+    Value of rock spacing : spacing of rock (in m, float)
+
+    Return:
+    =======
+
+    val_r3 : space of discontinuity rating 
+
+    """
+    val_r3 = 0
+    if spacing > 2.0:
+        val_r3 = 20
+    elif 2.0 >= spacing and spacing >= 0.6:
+        val_r3 = 15
+    elif 0.6 >= spacing and spacing >= 0.2:
+        val_r3 = 10
+    elif 0.2 >= spacing and spacing >= 0.06:
+        val_r3 = 8
+    elif spacing < 0.06:
+        val_r3 = 5
+    return val_r3
+
+
+def r4(code):
+    """
+    Condition of discontinuities.
+
+    Parameters:
+    -----------
+
+    We use code to represents condition of discontinuity in a rock material (code):
+    1 - very rough surfaces, not continuous, no separation, unweathered wall rock
+    2 - slightly rough surfaces, separation < 1mm, slightly weathered walls
+    3 - slightly rough surfaces, separation < 1mm, highly weathered walls
+    4 - slickensidd surfaces, or gouge 5mm thick, or separation 1-5mm continuous 
+    5 - soft gouge > 5mm thick, or separation > 5mm continuous
+
+    Return:
+    -------
+
+    val_r4 : condition of discontinuities rating
+
+    """
+    val_r4 = 0
+    if code == 1:
+        val_r4 = 30
+    elif code == 2:
+        val_r4 = 25
+    elif code == 3:
+        val_r4 = 20
+    elif code == 4:
+        val_r4 = 10
+    elif code == 5:
+        val_r4 = 0
+    return val_r4
+
+
+def r5(inflow, wpress, cond):
+    """
+    Groundwater condition.
+
+    Parameters:
+    -----------
+
+    inflow - inflow per 10 m tunnel length (i/m)
+    wpress - joint water pressure / major principal 
+    cond - general conditions
+
+    Return:
+    -------
+
+    val_r5 : groundwater rating
+
+    """
+    val_r5 = 0
+    if inflow == "none" and wpress == 0 and cond == "dry":
+        val_r5 = 15
+    elif inflow < 10 and wpress < 0.1 and cond == "damp":
+        val_r5 = 10
+    elif 25 >= inflow and inflow >= 10  and 0.2 >= wpress and wpress >= 0.1 and cond == "wet":
+        val_r5 = 7
+    elif 125 >= inflow and inflow > 25 and 0.5 >= wpress and wpress >= 0.2 and cond == "dripping":
+        val_r5 = 4
+    elif inflow > 125 and wpress > 0.5 and cond == "flowing":
+        val_r5 = 0
+    return val_r5
+
 
 def rmr89(r1, r2, r3, r4, r5):
     """
@@ -119,7 +212,5 @@ def rmr89(r1, r2, r3, r4, r5):
     .. [1] Bieniawski, Z.T. 1989. Engineering rock mass classifications. New York: Wiley.
 
     """
-    
-    
-    
-    return None
+    __rmr89 = r1 + r2 + r3 + r4 + r5 
+    return __rmr89
