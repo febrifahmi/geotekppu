@@ -7,5 +7,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: coverage.py badge
+      - name: Install coverage.py badge
         uses: tj-actions/coverage-badge-py@v1.8
+      - name: Running coverage
+        run: coverage run -m unittest discover
