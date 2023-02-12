@@ -8,7 +8,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Install coverage
-        uses: coverage
+        run: pip install coverage
       - name: Running coverage test
         run: coverage run -m unittest discover
       - name: Install coverage.py badge
