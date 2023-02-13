@@ -1,5 +1,5 @@
 """
-Copyright (2023) Febri Fahmi Hakim (febri.fahmi@politeknikpu.ac.id) and Daru Jaka Sasangka
+Copyright (2023) Febri Fahmi Hakim (febri.fahmi@politeknikpu.ac.id) and Daru Jaka Sasangka (darujakasasangka@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -155,7 +155,7 @@ def r5(inflow, wpress, cond):
 
     inflow - inflow per 10 m tunnel length (i/m)
     wpress - joint water pressure / major principal 
-    cond - general conditions
+    cond - general conditions (dry, damp, wet, dripping, or flowing)
 
     Return:
     -------
@@ -183,9 +183,6 @@ def rmr89(r1, r2, r3, r4, r5):
 
     An implementation of [1]__.
 
-    Features:
-    ---------
-
     Parameters:
     -----------
     
@@ -201,7 +198,7 @@ def rmr89(r1, r2, r3, r4, r5):
     RMR89 / rock mass rating value which consists of:
     - Rating value
     - Class number (I, II, III, IV, V)
-    - Description (Very good rock, good rock, Fair rock, Poor rock, Very poor rock)
+    - Description (Very good rock, Good rock, Fair rock, Poor rock, Very poor rock)
 
     Notes:
     ------
