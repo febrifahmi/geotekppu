@@ -72,11 +72,11 @@ def r2(drillcoreRQD):
     val_r2 = 0
     if 100 >= drillcoreRQD and drillcoreRQD >= 90:
         val_r2 = 20
-    elif 90 >= drillcoreRQD and drillcoreRQD >= 75:
+    elif 90 > drillcoreRQD and drillcoreRQD >= 75:
         val_r2 = 17
-    elif 75 >= drillcoreRQD and drillcoreRQD >= 50:
+    elif 75 > drillcoreRQD and drillcoreRQD >= 50:
         val_r2 = 13
-    elif 50 >= drillcoreRQD and drillcoreRQD >= 25:
+    elif 50 > drillcoreRQD and drillcoreRQD >= 25:
         val_r2 = 8
     elif drillcoreRQD < 25:
         val_r2 = 3
@@ -103,9 +103,9 @@ def r3(spacing):
         val_r3 = 20
     elif 2.0 >= spacing and spacing >= 0.6:
         val_r3 = 15
-    elif 0.6 >= spacing and spacing >= 0.2:
+    elif 0.6 > spacing and spacing >= 0.2:
         val_r3 = 10
-    elif 0.2 >= spacing and spacing >= 0.06:
+    elif 0.2 > spacing and spacing >= 0.06:
         val_r3 = 8
     elif spacing < 0.06:
         val_r3 = 5
