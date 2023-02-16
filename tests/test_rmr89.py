@@ -1,8 +1,8 @@
 import unittest
-from geotekppu.rmr.rmr__bieniawski1989 import r1, r2, r3, r4, r5, rmr89
+from src.geotekppu.rmr.rmr__bieniawski1989 import r1, r2, r3, r4, r5, rmr89, discontinuity_class
 
 class TestRMR89(unittest.TestCase):
-    # Test function r1
+    # Test the r1 function 
     def test_r1_1(self):
         self.assertEqual(r1("pls", 16), 15)
     
@@ -76,7 +76,7 @@ class TestRMR89(unittest.TestCase):
     def test_r1_24(self):
         self.assertNotEqual(r1("ucs", 0.73), 14)
 
-    # Test function r2
+    # Test the r2 function
     def test_r2_1(self):
         self.assertEqual(r2(100),20)
 
@@ -138,7 +138,7 @@ class TestRMR89(unittest.TestCase):
     def test_r2_20(self):
         self.assertNotEqual(r2(24),17)
 
-    # Test function r3
+    # Test the r3 function
     def test_r3_1(self):
         self.assertEqual(r3(2.1),20)
 
@@ -193,6 +193,38 @@ class TestRMR89(unittest.TestCase):
 
     def test_r3_18(self):
         self.assertNotEqual(r3(0.055),10)
+    
+    # Test function r4
+
+    # Test the discontinuity_class function
+    # test total rating value of same column
+    def test_disc_1(self):
+        self.assertEqual(discontinuity_class(0.9,None,"very_rough",None,"unweathered"),30)
+
+    def test_disc_2(self):
+        self.assertEqual(discontinuity_class(1,0.08,"rough","hl<5","slightly_weathered"),23)
+
+    def test_disc_3(self):
+        self.assertEqual(discontinuity_class(3,0.1,"slightly_rough","hl>5","moderately_weathered"),14)
+
+    def test_disc_4(self):
+        self.assertEqual(discontinuity_class(10,1,"smooth","sl<5","highly_weathered"),6)
+
+    def test_disc_5(self):
+        self.assertEqual(discontinuity_class(21,6,"slickensided","sl>5","decomposed"),0)
+    
+    # test total rating value of various cells/parameters which are not always in a same column
+    def test_disc_6(self):
+        self.assertEqual(discontinuity_class(0.99,0.09,"slightly_rough","sl<5","decomposed"),16)
+    
+    def test_disc_7(self):
+        self.assertEqual(discontinuity_class(1,0.1,"smooth","sl>5","unweathered"),15)
+
+    def test_disc_8(self):
+        self.assertEqual(discontinuity_class(3,1,"slickensided",None,"slightly_weathered"),14)
+
+    def test_disc_9(self):
+        self.assertEqual(discontinuity_class(10,6,"very_rough","hl<5","moderately_weathered"),14)
     
 
 if __name__ == '__main__':
