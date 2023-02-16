@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geotekppu"
+version = "0.0.1"
+authors = [
+  { name="Febri Fahmi Hakim", email="fahmi_fafa@yahoo.com" },
+  { name="Daru Jaka Sasangka", email="darujakasasangka@gmail.com" },
+]
+description = "A python module for geotechnic analysis."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/febrifahmi/geotekppu"
+"Bug Tracker" = "https://github.com/febrifahmi/geotekppu/issues"

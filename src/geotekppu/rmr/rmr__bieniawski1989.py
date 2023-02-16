@@ -1,5 +1,5 @@
 """
-Copyright (2023) Febri Fahmi Hakim (febri.fahmi@politeknikpu.ac.id) and Daru Jaka Sasangka (darujakasasangka@gmail.com)
+Copyright (2023) Febri Fahmi Hakim (fahmi_fafa@yahoo.com) and Daru Jaka Sasangka (darujakasasangka@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -112,6 +112,90 @@ def r3(spacing):
     return val_r3
 
 
+def discontinuity_class(dl, sep, rough, gouge, weather):
+    """
+    Classification of discontinuity condition.
+
+    Parameters:
+    -----------
+
+    - dl: discontinuity length (persistence) in m (<1m; 1-3m; 3-10m; 10-20m; >20m) (type: Int)
+    - sep: separation (aperture) in mm (None; <0.1mm; 0.1-1.0mm; 1-5mm; >5mm) (type: None, Float)
+    - rough: roughness (very_rough; rough; slightly_rough; smooth; slickensided) (type: String)
+    - gouge: infilling (None; hl<5; hl>5; sl<5; sl>5) (type: None, String)
+    - weather: weathering (unweathered; slightly_weathered; moderately_weathered; highly_weathered; decomposed) (type: String)
+
+    Return:
+    -------
+
+    totalrating: total rating calculated from five parameters of discontinuity condition
+
+    """
+    dl_rating = 0
+    sep_rating = 0
+    rough_rating = 0
+    gouge_rating = 0
+    weather_rating = 0
+
+    if dl < 1:
+        dl_rating = 6
+    elif dl >= 1 and dl < 3:
+        dl_rating = 4
+    elif dl >= 3 and dl < 10:
+        dl_rating = 2
+    elif dl >= 10 and dl <= 20:
+        dl_rating = 1
+    elif dl > 20:
+        dl_rating = 0
+
+    if sep == None:
+        sep_rating = 6
+    elif sep < 0.1:
+        sep_rating = 5
+    elif sep >= 0.1 and sep < 1.0:
+        sep_rating = 4
+    elif sep >= 1.0 and sep < 5:
+        sep_rating = 1
+    elif sep >= 5:
+        sep_rating = 0
+    
+    if rough == "very_rough":
+        rough_rating = 6
+    elif rough == "rough":
+        rough_rating = 5
+    elif rough == "slightly_rough":
+        rough_rating = 3
+    elif rough == "smooth":
+        rough_rating = 1
+    elif rough == "slickensided":
+        rough_rating = 0
+
+    if gouge == None:
+        gouge_rating = 6
+    elif gouge == "hl<5":
+        gouge_rating = 4
+    elif gouge == "hl>5":
+        gouge_rating = 2
+    elif gouge == "sl<5":
+        gouge_rating = 2
+    elif gouge == "sl>5":
+        gouge_rating = 0
+    
+    if weather == "unweathered":
+        weather_rating = 6
+    elif weather == "slightly_weathered":
+        weather_rating = 5
+    elif weather == "moderately_weathered":
+        weather_rating = 3
+    elif weather == "highly_weathered":
+        weather_rating = 1
+    elif weather == "decomposed":
+        weather_rating = 0
+    # print(dl_rating, sep_rating, rough_rating, gouge_rating, weather_rating)
+    totalrating = dl_rating + sep_rating + rough_rating + gouge_rating + weather_rating
+    return totalrating
+
+
 def r4(code):
     """
     Condition of discontinuities.
@@ -177,7 +261,7 @@ def r5(inflow, wpress, cond):
     return val_r5
 
 
-def rmr89(r1, r2, r3, r4, r5):
+def rmr89(r1, r2, r3, discontinuity_class, r5):
     """
     Rock Mass Rating (RMR) value calculation as proposed by Bieniawski (1973) to classify rock mass based on 5 classification parameters.
 
@@ -189,7 +273,7 @@ def rmr89(r1, r2, r3, r4, r5):
     r1 : strength rating
     r2 : Rock Quality Designation (RQD) rating
     r3 : space of discontinuity rating
-    r4 : condition of discontinuity rating
+    discontinuity_class : condition of discontinuity rating
     r5 : ground water rating
 
     Return(s):
@@ -209,5 +293,6 @@ def rmr89(r1, r2, r3, r4, r5):
     .. [1] Bieniawski, Z.T. 1989. Engineering rock mass classifications. New York: Wiley.
 
     """
-    __rmr89 = r1 + r2 + r3 + r4 + r5 
+    __rmr89 = r1 + r2 + r3 + discontinuity_class + r5
+    #  todo: add conditional to pick class number and to select description
     return __rmr89
