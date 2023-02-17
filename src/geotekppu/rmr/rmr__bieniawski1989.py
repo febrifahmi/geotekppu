@@ -248,7 +248,7 @@ def r5(inflow, wpress, cond):
 
     """
     val_r5 = 0
-    if inflow == "none" and wpress == 0 and cond == "dry":
+    if inflow == None and wpress == 0 and cond == "dry":
         val_r5 = 15
     elif inflow < 10 and wpress < 0.1 and cond == "damp":
         val_r5 = 10

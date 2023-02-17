@@ -195,6 +195,7 @@ class TestRMR89(unittest.TestCase):
         self.assertNotEqual(r3(0.055),10)
     
     # Test function r4
+    # we don't test it since we use more granular discontinuity_class function instead
 
     # Test the discontinuity_class function
     # test total rating value of same column
@@ -226,6 +227,40 @@ class TestRMR89(unittest.TestCase):
     def test_disc_9(self):
         self.assertEqual(discontinuity_class(10,6,"very_rough","hl<5","moderately_weathered"),14)
     
+    # Test function r5
+    def test_r5_1(self):
+        self.assertEqual(r5(None,0,"dry"),15)
+
+    def test_r5_2(self):
+        self.assertEqual(r5(0,0.09,"damp"),10)
+
+    def test_r5_3(self):
+        self.assertEqual(r5(10,0.1,"wet"),7)
+
+    def test_r5_4(self):
+        self.assertEqual(r5(26,0.2,"dripping"),4)
+
+    def test_r5_5(self):
+        self.assertEqual(r5(126,0.6,"flowing"),0)
+
+    # Test function rmr89
+    def test_rmr89(self):
+        self.assertEqual(rmr89(
+            r1("pls",251),
+            r2(92),
+            r3(0.6),
+            discontinuity_class(1,0.1,"rough","hl<5","slightly_weathered"),
+            r5(None,0,"dry")
+        ),87)
+
+    def test_rmr89(self):
+        self.assertNotEqual(rmr89(
+            r1("pls",251),
+            r2(92),
+            r3(0.6),
+            discontinuity_class(1,0.1,"rough","hl<5","slightly_weathered"),
+            r5(None,0,"dry")
+        ),0)
 
 if __name__ == '__main__':
     unittest.main()
