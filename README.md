@@ -6,7 +6,7 @@ A python module for geotechnic analysis.
 ## Usage
 ### Installation
 
-`pip install geotekppu`
+`pip install geotekppu==0.0.2`
 ### How to use
 
 `from geotekppu import *`
@@ -15,7 +15,7 @@ A python module for geotechnic analysis.
 
 Rock Mass Rating (RMR) is a rating system proposed by Bieniawski (1989) to classify rock based on five classification parameters.
 
-This Python module is developed based on [1].
+This Python module is developed based on [1], [2].
 
 ```
 Parameters:
@@ -39,4 +39,5 @@ RMR89 / rock mass rating value which consists of:
 References
 ----------
 [1] Bieniawski, Z.T. 1989. Engineering rock mass classifications. New York: Wiley.
+[2] B. Celada, I. Tardáguila, P. Varona, A. Rodríguez, and Z. T. Bieniawski, “Innovating Tunnel Design by an Improved Experience-based RMR System.,” Proc. World Tunn. Congr. 2014 – Tunnels a better Life, vol. 3, pp. 1–9, 2014.
 
