@@ -38,6 +38,9 @@ RMR89 / rock mass rating value which consists of:
 
 References
 ----------
+
 [1] Bieniawski, Z.T. 1989. Engineering rock mass classifications. New York: Wiley.
+
 [2] B. Celada, I. Tardáguila, P. Varona, A. Rodríguez, and Z. T. Bieniawski, “Innovating Tunnel Design by an Improved Experience-based RMR System.,” Proc. World Tunn. Congr. 2014 – Tunnels a better Life, vol. 3, pp. 1–9, 2014.
+
 
