@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-  - family-names: Hakim
-    given-names: Febri Fahmi
-    orcid: https://orcid.org/0000-0003-0340-1881
   - family-names: Sasangka
     given-names: Daru Jaka
     orcid: https://orcid.org/0000-0002-7902-8799
+  - family-names: Hakim
+    given-names: Febri Fahmi
+    orcid: https://orcid.org/0000-0003-0340-1881
 title: "GeotekPPU: A python module for geotechnic analysis"
 version: 0.0.2
 date-released: 2023-02-17
