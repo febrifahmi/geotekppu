@@ -26,28 +26,28 @@ def r1(idx, value):
     """
     val_r1 = 0
     if idx == "pls":
-        if value > 10:
+        if value >= 10:
             val_r1 = 15
-        elif 10 > value and value > 4:
+        elif 10 > value and value >= 4:
             val_r1 = 12
-        elif 4 > value and value > 2:
+        elif 4 > value and value >= 2:
             val_r1 = 7
-        elif 2 > value and value > 1:
+        elif 2 > value and value >= 1:
             val_r1 = 4
         else:
             val_r1 = "For value lower than 1 MPa, please proceed with Uniaxial Compressive Strength Test" 
     elif idx == "ucs":
-        if value > 250:
+        if value >= 250:
             val_r1 = 15
-        elif 250 > value and value > 100:
+        elif 250 > value and value >= 100:
             val_r1 = 12
-        elif 100 > value and value > 50:
+        elif 100 > value and value >= 50:
             val_r1 = 7
-        elif 50 > value and value > 25:
+        elif 50 > value and value >= 25:
             val_r1 = 4
-        elif 25 > value and value > 5:
+        elif 25 > value and value >= 5:
             val_r1 = 2
-        elif 5 > value and value > 1:
+        elif 5 > value and value >= 1:
             val_r1 = 1
         elif value < 1:
             val_r1 = 0
