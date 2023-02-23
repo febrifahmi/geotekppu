@@ -6,7 +6,7 @@ A python module for geotechnic analysis.
 ## Usage
 ### Installation
 
-`pip install geotekppu==0.0.2`
+`pip install geotekppu`
 
 ### How to use
 
@@ -156,4 +156,19 @@ References
 
 [2] B. Celada, I. Tardáguila, P. Varona, A. Rodríguez, and Z. T. Bieniawski, “Innovating Tunnel Design by an Improved Experience-based RMR System.,” Proc. World Tunn. Congr. 2014 – Tunnels a better Life, vol. 3, pp. 1–9, 2014.
 
+[3] Y. Tong, Y. Yue, Z. Huang, L. Zhu, Z. Li, and W. Zhang, “Modified RMR Rock Mass Classification System for Preliminary Selection of Potential Sites of High-Level Radioactive Waste Disposal Engineering,” Sustain., vol. 14, no. 23, pp. 1–17, 2022, doi: 10.3390/su142315596.
 
+
+How to cite
+-----------
+
+```
+@software{Sasangka_GeotekPPU_A_python_2023,
+author = {Sasangka, Daru Jaka and Hakim, Febri Fahmi},
+month = {2},
+title = {{GeotekPPU: A python module for geotechnic analysis}},
+url = {https://github.com/febrifahmi/geotekppu},
+version = {0.0.2},
+year = {2023}
+}
+```
