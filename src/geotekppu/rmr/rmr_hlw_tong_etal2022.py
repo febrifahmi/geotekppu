@@ -31,7 +31,7 @@ def AdjustedR1ucs(strength):
     """
     val_r1_adj = 0
     if strength <= 250:
-        val_r1_adj = ((0.6343*math.log(strength,10))-0.3627)
+        val_r1_adj = 10**((0.6343*math.log(strength,10))-0.3627)
     elif strength > 250:
         val_r1_adj = 15
     return round(val_r1_adj,4)
@@ -62,4 +62,108 @@ def AdjustedR2(rqd):
     return round(val_r2_adj,4)
 
 
+def AdjustedR3(spacing):
+    """
+    Adjusted R3 - adjustment of rating value based on joint spacing.
 
+    Parameters:
+    -----------
+
+    - spacing: space of discontinuity
+
+    Return:
+    -------
+
+    val_r3_adj: value of r3 adjusted.
+
+    """
+    val_r3_adj = 0
+    if spacing < 2:
+        val_r3_adj = 10**((0.1799*((math.log(spacing,10))**3)) + (0.3834*((math.log(spacing,10))**2)) + (0.4462*math.log(spacing,10)) + 1.125)
+    elif spacing >= 2:
+        val_r3_adj = 20
+    else:
+        val_r3_adj = None
+    return round(val_r3_adj,4)
+
+
+# R4, R5, R6 is the same with the traditional or modified RMR system (no adjustment) 
+# 
+
+def CalcR6():
+    val_r6 = 0
+    return val_r6
+
+def CalcR7(sum_ri,per_i):
+    """
+    Geostress correction / strength-stress ratio index / in-situ stress modification index (R7) as proposed in Tong et.al (2022) (a ration to measure the risk of rock bursts).
+    Denoted by the equation:
+
+        R7 = Sum of Ri x Percentage of (i)
+
+        Where Ri for specific rock burst grade:
+        I (no rock burst) --> Ri = 0
+        II (slight rock burst) --> Ri = -4
+        III (moderate rock burst) --> Ri = -8
+        IV (severe rock burst) --> Ri = -12
+
+    Parameters:
+    -----------
+
+    - Sum of Ri: score of Ri based on rock burst grade
+    - Per(i): percentage of different rock burst grade
+
+    Return:
+    -------
+
+    val_r7: value of R7
+
+    """
+    val_r7 = sum_ri * per_i
+    return val_r7 
+
+
+def CalcR8(perm_co):
+    """
+    Rock Mass Permeability Index as main factor influence the water seepage in rocks material.
+
+    This value defined as:
+
+        R8 = -12 x (1 - Perm(<=10^-9m/s))
+
+    Parameters:
+    -----------
+
+    - perm_co: coefficient of permeability value and it should within the range <=10^-9 m/s. If permeability coefficient value == <=10^-9 m/s == 1, then R8 = -12 x (1-1) = 0. Otherwise, when permeability coefficient value == <=10^-9 m/s == 0, R8 is -12. The coefficient is between 0 and 1.
+
+
+    Return:
+    -------
+
+    val_r8: value of R8
+
+    """
+    val_r8 = -12 * (1 - perm_co)
+    return round(val_r8,2)
+
+
+def CalcR9():
+    """
+    The gorundwater chemistry index as proposed by Tong et.al (2022). 
+
+    Parameters:
+    -----------
+
+    - pH: pH (acidity)
+    - tds: total dissolved solids (g/L)
+    - cl-: non/negatively charged chlorine (g/L)
+
+    Return:
+    -------
+
+    val_r9
+
+    """
+    val_r9 = 0
+    
+    return val_r9
