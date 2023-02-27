@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geotekppu"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="Febri Fahmi Hakim", email="fahmi_fafa@yahoo.com" },
   { name="Daru Jaka Sasangka", email="darujakasasangka@gmail.com" },
