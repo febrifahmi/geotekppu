@@ -90,8 +90,41 @@ def AdjustedR3(spacing):
 # R4, R5, R6 is the same with the traditional or modified RMR system (no adjustment) 
 # 
 
-def CalcR6():
+def CalcR6(cat,favorability):
     val_r6 = 0
+    if cat == "tunnel":
+        if favorability == "vfav":
+            val_r6 = 0
+        elif favorability == "fav":
+            val_r6 = -2
+        elif favorability == "fair":
+            val_r6 = -5
+        elif favorability == "unfav":
+            val_r6 = -10
+        elif favorability == "vunfav":
+            val_r6 = -12
+    elif cat == "foundation":
+        if favorability == "vfav":
+            val_r6 = 0
+        elif favorability == "fav":
+            val_r6 = -2
+        elif favorability == "fair":
+            val_r6 = -7
+        elif favorability == "unfav":
+            val_r6 = -15
+        elif favorability == "vunfav":
+            val_r6 = -25
+    elif cat == "slope":
+        if favorability == "vfav":
+            val_r6 = 0
+        elif favorability == "fav":
+            val_r6 = -5
+        elif favorability == "fair":
+            val_r6 = -25
+        elif favorability == "unfav":
+            val_r6 = -50
+        elif favorability == "vunfav":
+            val_r6 = -60
     return val_r6
 
 def CalcR7(sum_ri,per_i):
@@ -147,7 +180,7 @@ def CalcR8(perm_co):
     return round(val_r8,2)
 
 
-def CalcR9():
+def CalcR9(pH, tds, cl):
     """
     The gorundwater chemistry index as proposed by Tong et.al (2022). 
 
@@ -161,9 +194,24 @@ def CalcR9():
     Return:
     -------
 
-    val_r9
+    val_r9: value of R9
 
     """
     val_r9 = 0
-    
+    if pH > 6 and pH < 10 and tds < 50 and cl < 20:
+        val_r9 = 0
+    elif pH > 6 and pH < 10 and tds < 50 and cl >= 20:
+        val_r9 = -4
+    elif pH > 6 and pH < 10 and tds >= 50 and cl < 20:
+        val_r9 = -4
+    elif pH <= 6 or pH >= 10 and tds < 50 and cl < 20:
+        val_r9 = -4
+    elif pH <= 6 or pH >= 10 and tds >= 50 and cl < 20:
+        val_r9 = -8
+    elif pH <= 6 or pH >= 10 and tds < 50 and cl >= 20:
+        val_r9 = -8
+    elif pH <= 6 or pH >= 10 and tds >= 50 and cl >= 20:
+        val_r9 = -8
+    else:
+        val_r9 = None
     return val_r9
