@@ -91,6 +91,21 @@ def AdjustedR3(spacing):
 # 
 
 def CalcR6(cat,favorability):
+    """
+    Adjustment rating for tunnel, foundation and slope based of favorability.
+
+    Parameters:
+    -----------
+
+    - cat: category (tunnel, foundation, slope) (type String)
+    - favorability: favorability opstion (vfav -> very favorable; fav -> favorable; fair; unfav -> unfavorable; vunfav: very unfavorable)
+
+    Return:
+    -------
+
+    val_r6: rating value of R6
+
+    """
     val_r6 = 0
     if cat == "tunnel":
         if favorability == "vfav":
@@ -127,12 +142,12 @@ def CalcR6(cat,favorability):
             val_r6 = -60
     return val_r6
 
-def CalcR7(sum_ri,per_i):
+def CalcR7(ri,per_i):
     """
     Geostress correction / strength-stress ratio index / in-situ stress modification index (R7) as proposed in Tong et.al (2022) (a ration to measure the risk of rock bursts).
     Denoted by the equation:
 
-        R7 = Sum of Ri x Percentage of (i)
+        R7 = Sum of (Ri x Percentage of (i))
 
         Where Ri for specific rock burst grade:
         I (no rock burst) --> Ri = 0
@@ -143,16 +158,16 @@ def CalcR7(sum_ri,per_i):
     Parameters:
     -----------
 
-    - Sum of Ri: score of Ri based on rock burst grade
+    - Ri: score of Ri based on rock burst grade
     - Per(i): percentage of different rock burst grade
 
     Return:
     -------
 
-    val_r7: value of R7
+    val_r7: value of R7 (sum of (ri * per_i)) from all data
 
     """
-    val_r7 = sum_ri * per_i
+    val_r7 = ri * per_i
     return val_r7 
 
 
@@ -204,13 +219,13 @@ def CalcR9(pH, tds, cl):
         val_r9 = -4
     elif pH > 6 and pH < 10 and tds >= 50 and cl < 20:
         val_r9 = -4
-    elif pH <= 6 or pH >= 10 and tds < 50 and cl < 20:
+    elif (pH <= 6 or pH >= 10) and tds < 50 and cl < 20:
         val_r9 = -4
-    elif pH <= 6 or pH >= 10 and tds >= 50 and cl < 20:
+    elif (pH <= 6 or pH >= 10) and tds >= 50 and cl < 20:
         val_r9 = -8
-    elif pH <= 6 or pH >= 10 and tds < 50 and cl >= 20:
+    elif (pH <= 6 or pH >= 10) and tds < 50 and cl >= 20:
         val_r9 = -8
-    elif pH <= 6 or pH >= 10 and tds >= 50 and cl >= 20:
+    elif (pH <= 6 or pH >= 10) and tds >= 50 and cl >= 20:
         val_r9 = -8
     else:
         val_r9 = None
