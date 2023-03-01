@@ -14,12 +14,12 @@ class TestRMRhlw(unittest.TestCase):
     def test_AdjustedR1_3(self):
         self.assertEqual(AdjustedR1ucs(25),3.3421)
     
-    def test_AdjustedR1_2(self):
+    def test_AdjustedR1_4(self):
         self.assertEqual(AdjustedR1ucs(251),15)
 
     # Test function AdjustedR2
     def test_adjustedR2_1(self):
-        self.assertEqual(AdjustedR2(245),48.6194)
+        self.assertEqual(AdjustedR2(99),20.0326)
 
     # Test function AdjustedR3
     def test_adjustedR3_1(self):
