@@ -13,7 +13,7 @@ A python module for geotechnic analysis.
 `from geotekppu import *`
 
 
-This Python module is developed based on [1], [2].
+This Python module is developed based on [1], [2], [3].
 
 ### Rock Mass Rating (RMR89)
 
@@ -297,7 +297,7 @@ Adjusted R2 - adjustment of rock quality designation rating.
 Parameters:
 -----------
 
-- rqd: RQD rating/value.
+- rqd: RQD rating/value (0-100).
 
 Return:
 -------

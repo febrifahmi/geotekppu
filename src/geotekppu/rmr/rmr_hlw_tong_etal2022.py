@@ -44,7 +44,7 @@ def AdjustedR2(rqd):
     Parameters:
     -----------
 
-    - rqd: RQD rating/value.
+    - rqd: RQD rating/value (0-100).
 
     Return:
     -------
@@ -53,13 +53,16 @@ def AdjustedR2(rqd):
 
     """
     val_r2_adj = 0
-    if rqd < 250:
+    if rqd < 100:
         val_r2_adj = (0.1958*rqd) + 0.6484
-    elif rqd == 250:
+    elif rqd == 100:
         val_r2_adj = 20
     else:
         val_r2_adj = None
-    return round(val_r2_adj,4)
+    if val_r2_adj != None:
+        return round(val_r2_adj,4)
+    else:
+        return val_r2_adj
 
 
 def AdjustedR3(spacing):
