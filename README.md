@@ -415,7 +415,7 @@ author = {Sasangka, Daru Jaka and Hakim, Febri Fahmi},
 month = {2},
 title = {{GeotekPPU: A python module for geotechnic analysis}},
 url = {https://github.com/febrifahmi/geotekppu},
-version = {0.0.2},
+version = {latest},
 year = {2023}
 }
 ```
