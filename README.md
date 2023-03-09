@@ -13,7 +13,7 @@ A python module for geotechnic analysis.
 `from geotekppu import *`
 
 
-This Python module is developed based on [1], [2], [3].
+This Python module is developed based on [1], [2], [3], [4].
 
 ### Rock Mass Rating (RMR89)
 
@@ -404,6 +404,8 @@ References
 [2] B. Celada, I. Tardáguila, P. Varona, A. Rodríguez, and Z. T. Bieniawski, “Innovating Tunnel Design by an Improved Experience-based RMR System.,” Proc. World Tunn. Congr. 2014 – Tunnels a better Life, vol. 3, pp. 1–9, 2014.
 
 [3] Y. Tong, Y. Yue, Z. Huang, L. Zhu, Z. Li, and W. Zhang, “Modified RMR Rock Mass Classification System for Preliminary Selection of Potential Sites of High-Level Radioactive Waste Disposal Engineering,” Sustain., vol. 14, no. 23, pp. 1–17, 2022, doi: 10.3390/su142315596.
+
+[4] Romana, M., Tomás, R., Serón, J.B. (2015). Slope Mass Rating (SMR) geomechanics classification: thirty years review. ISRM Congress 2015 Proceedings - International Symposium on Rock Mechanics, Quebec Canada, May 10 to 13 2015. ISBN: 978-1-926872-25-4, 10 pp.
 
 
 How to cite
