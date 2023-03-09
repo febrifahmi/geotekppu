@@ -38,31 +38,34 @@ def F1(ftype, dis_dd, slope_d):
 
     """
     val_f1 = 0
-    if ftype == "P":
-        A = abs(dis_dd-slope_d)
-        if A > 30:
-            val_f1 = 0.15
-        elif A <= 30 and A > 20:
-            val_f1 = 0.40
-        elif A <=20 and A > 10:
-            val_f1 = 0.70
-        elif A <= 10 and A > 5:
-            val_f1 = 0.85
-        elif A <= 5:
-            val_f1 = 1.00
+    if dis_dd <= 360 and slope_d <=360:
+        if ftype == "P":
+            A = abs(dis_dd-slope_d)
+            if A > 30:
+                val_f1 = 0.15
+            elif A <= 30 and A > 20:
+                val_f1 = 0.40
+            elif A <=20 and A > 10:
+                val_f1 = 0.70
+            elif A <= 10 and A > 5:
+                val_f1 = 0.85
+            elif A <= 5:
+                val_f1 = 1.00
 
-    elif ftype == "T":
-        A = abs(dis_dd-slope_d-180)
-        if A > 30:
-            val_f1 = 0.15
-        elif A <= 30 and A > 20:
-            val_f1 = 0.40
-        elif A <=20 and A > 10:
-            val_f1 = 0.70
-        elif A <= 10 and A > 5:
-            val_f1 = 0.85
-        elif A <= 5:
-            val_f1 = 1.00
+        elif ftype == "T":
+            A = abs(dis_dd-slope_d-180)
+            if A > 30:
+                val_f1 = 0.15
+            elif A <= 30 and A > 20:
+                val_f1 = 0.40
+            elif A <=20 and A > 10:
+                val_f1 = 0.70
+            elif A <= 10 and A > 5:
+                val_f1 = 0.85
+            elif A <= 5:
+                val_f1 = 1.00
+    else:
+        val_f1 = None
 
     return val_f1
 
@@ -85,19 +88,22 @@ def F2(ftype, dis_dip):
  
     """
     val_f2 = 0
-    if ftype == "P":
-        if dis_dip < 20:
-            val_f2 = 0.15
-        elif dis_dip >= 20 and dis_dip < 30:
-            val_f2 = 0.40
-        elif dis_dip >= 30 and dis_dip < 35:
-            val_f2 = 0.70
-        elif dis_dip >= 35 and dis_dip < 45:
-            val_f2 = 0.85
-        elif dis_dip >= 45:
+    if dis_dip <= 360:
+        if ftype == "P":
+            if dis_dip < 20:
+                val_f2 = 0.15
+            elif dis_dip >= 20 and dis_dip < 30:
+                val_f2 = 0.40
+            elif dis_dip >= 30 and dis_dip < 35:
+                val_f2 = 0.70
+            elif dis_dip >= 35 and dis_dip < 45:
+                val_f2 = 0.85
+            elif dis_dip >= 45:
+                val_f2 = 1.00
+        elif ftype == "T":
             val_f2 = 1.00
-    elif ftype == "T":
-        val_f2 = 1.00
+    else:
+        val_f2 = None
     return val_f2
 
 
@@ -122,18 +128,30 @@ def F3(ftype, slope, ddips):
     val_f3 = 0
     if ftype == "P":
         C = slope - ddips
-        if C > 10:
-            val_f3 = 0
-        elif C <= 10 and C > 0:
-            val_f3 = -6
-        elif C == 0:
-            val_f3 = -25
-        elif C < 0 and C >= -10:
-            val_f3 = -50
-        elif C < - 10:
-            val_f3 = -60
+        if C <= 90:
+            if C > 10:
+                val_f3 = 0
+            elif C <= 10 and C > 0:
+                val_f3 = -6
+            elif C == 0:
+                val_f3 = -25
+            elif C < 0 and C >= -10:
+                val_f3 = -50
+            elif C < - 10:
+                val_f3 = -60
+        else:
+            val_f3 = None
     elif ftype == "T":
         C = slope + ddips
+        if C <= 180:
+            if C < 110:
+                val_f3 = 0
+            elif C >= 110 and C < 120:
+                val_f3 = -6
+            elif C >= 120:
+                val_f3 = -25
+        else:
+            val_f3 = None
 
     return val_f3
 
@@ -167,5 +185,22 @@ def F4(method):
 
 
 def SMR2015(rmrb, F1, F2, F3, F4):
-    smr = 0
+    """
+    Slope Mass Rating (SMR) as proposed by Romana (1985, 2015).
+
+    Parameters:
+    -----------
+
+    - rmrb: RMR basic
+    - F1: correction factor F1 regarding parallelism
+    - F2: correction factor F2 regarding probability of discontinuity shear strength
+    - F3: correction factor F3 regarding 
+
+    Return:
+    -------
+
+    smr: Slope mass rating value
+
+    """
+    smr = rmrb + (F1 * F2 * F3) + F4
     return smr
