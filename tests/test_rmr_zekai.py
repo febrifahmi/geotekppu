@@ -1,7 +1,7 @@
 import unittest
 from src.geotekppu.rmr.rmr__sen_sadagah2002 import RMR02pls, RMR02ucs
 
-class TestRMR89(unittest.TestCase):
+class TestRMRzekai(unittest.TestCase):
 
     # Testing function RMR02pls
     def test_rmrpls_1(self):
