@@ -88,7 +88,7 @@ def F2(ftype, dis_dip):
  
     """
     val_f2 = 0
-    if dis_dip <= 360:
+    if dis_dip <= 90:
         if ftype == "P":
             if dis_dip < 20:
                 val_f2 = 0.15

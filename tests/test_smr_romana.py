@@ -77,6 +77,19 @@ class TestSMRromana(unittest.TestCase):
     def test_F4_4(self):
         self.assertEqual(F4("bm"),0)
 
+    # Test function SMR2015
+    def test_SMR2015_1(self):
+        self.assertEqual(SMR2015(60,0.40,0.70,-6,15),73.32)
+    
+    def test_SMR2015_2(self):
+        self.assertEqual(SMR2015(60,0.15,0.15,0,15),75)
+    
+    def test_SMR2015_3(self):
+        self.assertEqual(SMR2015(45,0.15,0.15,0,15),60)
+    
+    def test_SMR2015_4(self):
+        self.assertEqual(SMR2015(75,0.15,0.15,0,15),90)
+
 
 
 if __name__ == '__main__':
