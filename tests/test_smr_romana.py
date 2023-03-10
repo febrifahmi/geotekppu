@@ -1,5 +1,5 @@
 import unittest
-from src.geotekppu.rmr.smr__romana_ts2015 import F1, F2, F3, F4, SMR2015 
+from src.geotekppu.smr.smr__romana_ts2015 import F1, F2, F3, F4, SMR2015 
 
 
 class TestSMRromana(unittest.TestCase):
